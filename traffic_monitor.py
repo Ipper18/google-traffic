@@ -79,7 +79,7 @@ def calculate_route(api_key, start_coordinates, end_coordinates, routName, conne
         # ZAPIS DO BAZY DANYCH
         cursor = connection.cursor()
         insert_query = """
-        INSERT INTO traffic (data, dzien_tygodnia, godzina, nazwa_trasy, dystans, czas_minut)
+        INSERT INTO googletraffic.traffic (data, dzien_tygodnia, godzina, nazwa_trasy, dystans, czas_minut)
         VALUES (%s, %s, %s, %s, %s, %s);
         """
         cursor.execute(insert_query, (date, day_of_week, time_of_day, routName, distance, minute))
@@ -98,7 +98,7 @@ if __name__ == "__main__":
     load_dotenv(dotenv_path='connection.env')
     api_key = os.getenv('API_KEY', default='')
 
-    connection = mysql.connector.connect(user='admin', password='admin', database='googletrafic', host='127.0.0.1', port='3306')  # Uzupełnij swoimi danymi
+    connection = mysql.connector.connect(user='admin', password='Admin123', database='Googletraffic', host='34.118.70.238', port='3306')  # Uzupełnij swoimi danymi
 
     if not api_key:
         print("API key not found. Check the connection.env file.")
